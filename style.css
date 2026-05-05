@@ -1,0 +1,530 @@
+/* ------------------------ GENERAL BODY ------------------------ */
+body {
+    font-family: Arial, sans-serif;
+    /**background: url('images/package_background.jpg') no-repeat center center fixed;
+    background-size: cover; **/
+    margin: 0;
+    padding: 0;
+    color: #000;
+
+}
+
+body::before {
+    pointer-events: none;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+    /* BACKGROUND SLIDER*/
+.bg-slider {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transform: scale(1.1);
+    transition: opacity 1.5s ease-in-out,
+    transform 6s ease-in-out;
+}
+
+/* SLIDE IMAGES */
+.slide:nth-child(1) {
+    background-image: url("images/DeliveryPay.jpeg");
+}
+.slide:nth-child(2) {
+    background-image: url("images/bg1.jpeg");
+}
+.slide:nth-child(3) {
+    background-image: url("images/bg2.jpeg");
+}
+.slide:nth-child(4) {
+    background-image: url("images/bg3.jpeg");
+}
+.slide:nth-child(5) {
+    background-image: url("images/bg4.jpeg");
+}
+
+.slide.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+/* DARK OVERLAY*/
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    
+
+
+    z-index: 0;
+}
+
+
+/* KEEP CONTENT ABOVE*/
+
+
+
+
+/* ------------------------ HEADER / LOGO ------------------------ */
+.tracking-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255,255,255,0.85);
+    padding: 10px 20px;
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.tracking-header .logo {
+    width: 70px;
+    height: auto;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.85);
+
+}
+
+/* ------------------------ CONTAINERS ------------------------ */
+.admin-container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+
+.tracking-container {
+    max-width: 750px;
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    backdrop-filter: blur(2px);
+}
+
+/* ------------------------ FORM GRID ------------------------ */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+/* FULL WIDTH FORM GROUPS */
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+/* ------------------------ LABELS & INPUTS ------------------------ */
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* ------------------------ BUTTONS ------------------------ */
+button.save-btn,
+button.delete-btn,
+button.retrieve-btn,
+#passwordSection button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button.save-btn {
+    background: #28a745;
+    color: #fff;
+    margin-right: 10px;
+}
+
+button.save-btn:hover {
+    background: #218838;
+}
+
+button.delete-btn {
+    background: #dc3545;
+    color: #fff;
+}
+
+button.delete-btn:hover {
+    background: #c82333;
+}
+
+button.retrieve-btn {
+    background:#0056b3;
+    color: #fff;
+}
+
+button.retrieve-btn:hover {
+    background: #007bff;
+}
+
+#passwordSection button {
+    background: #007bff;
+    color: white;
+}
+
+#passwordSection button:hover {
+    background: #0056b3;
+}
+
+/* ------------------------ ADMIN BUTTONS ------------------------ */
+.admin-buttons {
+    margin-top: 20px;
+    text-align: right;
+}
+
+/* ------------------------ PASSWORD LOGIN SECTION ------------------------ */
+#passwordSection {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+#passwordSection h2 {
+    margin-bottom: 20px;
+}
+
+#passwordSection input {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+}
+
+/* ------------------------ TRACKING PAGE ------------------------ */
+/*.track-input-box {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}*/
+
+.track-input-box {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin: 0 auto 20px;
+}
+
+
+.track-input-box input {
+    flex: 1;
+    padding: 0 110px 0 15px;
+    height: 50px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 10px;
+    border: none;
+    background-color: #fff;
+    color: rgb(236, 42, 42);
+    font-size: 20px;
+}
+
+.track-input-box input::placeholder {
+    color: rgba(236, 42, 42);
+}
+
+.track-input-box button {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    height:38px;
+    width: 100px;
+    padding: 0 18px;
+    font-size: 16px;
+    border-radius: 10px;
+    background: rgb(248, 3, 3);
+    color: #fff;
+    border-color: #fff;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-weight: 600;
+}
+
+
+.track-input-box button:hover {
+    background: rgb(236, 42, 42);
+}
+
+
+
+.package-info strong {
+    color: #fff; /* labels */
+}
+
+
+.package-info img {
+    display: block;
+    margin: 10px auto;
+    width: 180px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+.route-info {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    background: #fc0;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.progress-container {
+    width: 100%;
+    height: 20px;
+    background: #fc0;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+#progressBar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #28a745, #82e0aa, #28a745);
+    border-radius: 10px;
+    transition: width 0.2s ease;
+    animation: progress-glow 2s infinite;
+}
+
+@keyframes progress-glow {
+    0% { filter: brightness(1); }
+    50% { filter: brightness(1.3); }
+    100% { filter: brightness(1); }
+}
+
+#map {
+    height: 500px;
+    width: 100%;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+}
+
+.leaflet-marker-icon {
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+    transition: transform 0.2s;
+}
+
+.leaflet-marker-icon:hover {
+    transform: scale(1.1);
+}
+
+.leaflet-routing-container {
+    display: none !important;
+}
+
+/* ------------------------ RESPONSIVE ------------------------ */
+@media (max-width: 600px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    .route-info {
+        flex-direction: column;
+        gap: 5px;
+    }
+    .track-input-box {
+        flex-direction: column;
+    }
+    .track-input-box button {
+        width: 100%;
+    }
+}
+
+
+.package-info {
+    background: url('images/package_background.png') no-repeat center center;
+    background-size: cover;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    text-align: left;
+    font-weight: bold;
+    line-height: 1.6;
+    color: #fff; /* White text to contrast on background */
+    position:relative;
+}
+
+/* Optional: add a semi-transparent overlay for readability */
+.package-info::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 10px;
+    z-index: 0;
+}
+
+.package-info * {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* GPS pulse dot */
+.gps-dot {
+    width: 14px;
+    height: 14px;
+    background: red;
+    border-radius: 50%;
+    position: relative;
+}
+
+.gps-dot::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: rgba(255, 0, 0, 0.4); /* 🔴 red pulse */
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    animation: pulse 1.5s infinite;
+}
+
+.find-charge-container {
+    position: static;
+    width: 100%;
+}
+.find-charge-image img {
+    background: no-repeat center center;
+    height: 500px;
+    width:100% ;
+    display: block;
+    
+}
+.find-texts-container{
+    position: static;
+    display:inline-flex;
+    top: 0;
+    width: 100%;
+
+}
+.find-numbers-container {
+    margin: 0 200px;
+    gap: 10px;
+    display: flex;
+}
+
+.button-container {
+    margin-left: 100px;
+    gap: 8px;
+}
+
+
+.image-row {
+    display: flex;
+    gap: 10px;
+    margin: 20px;
+}
+.image-card {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    border-radius: 12px;
+}
+.image-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
+.image-text {
+    position: absolute;
+    bottom: 15px;
+    left: 10px;
+    color: rgb(248, 3, 3);
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+}
+
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(3); opacity: 0; }
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+
+@media (max-width: 600px) {
+    .track-input-box{
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .track-input-box input {
+        padding:12px;
+        height: 45px;
+    }
+
+    .track-input-box button {
+        position: static;
+        transform: none;
+        width: 100%;
+        height: 45px;
+        border-radius: 10px ;
+    }
+
+    .find-texts-container {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    .find-numbers-container {
+        display: flex;
+        flex-direction:column;
+        text-align: left;
+        gap: 8px;
+    }
+    .button-container {
+        display: flex;
+        flex-direction:column;
+        gap: 8px;
+    }
+    
+    .image-row {
+        flex-direction: column;
+    }
+}
+
+

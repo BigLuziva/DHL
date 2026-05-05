@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="admin-container">
+
+    <!-- PASSWORD LOGIN -->
+    <div id="passwordSection">
+        <h2>Admin Login</h2>
+        <div class="form-group full-width">
+            <label>Enter Password</label>
+            <input type="password" id="adminPasswordInput" placeholder="Password">
+        </div>
+        <button class="save-btn" onclick="checkAdminPassword()">Login</button>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="adminDashboard" style="display:none;">
+        <h2>Admin Dashboard</h2>
+
+        <div class="form-grid">
+
+            <div class="form-group">
+                <label>Tracking Number</label>
+                <input type="text" id="trackingNumber">
+            </div>
+
+            <div class="form-group">
+                <label>Status</label>
+                <select id="status">
+                    <option value="Pending">Pending</option>
+                    <option value="On The Way">On The Way</option>
+                    <option value="Delivered">Delivered</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Customer Name</label>
+                <input type="text" id="customerName">
+            </div>
+
+            <div class="form-group">
+                <label>Customer Email</label>
+                <input type="email" id="customerEmail">
+            </div>
+
+            <div class="form-group">
+                <label>Customer Phone</label>
+                <input type="text" id="customerPhone">
+            </div>
+            <div class="form-group">
+                <label>Address</label>
+                <input type="text" id="address">
+            </div>
+
+            <div class="form-group">
+                <label>Item Name</label>
+                <input type="text" id="item">
+            </div>
+
+            <div class="form-group">
+                <label>Weight (kg)</label>
+                <input type="number" id="weight">
+            </div>
+
+            <div class="form-group">
+                <label>Manual Progress (%)</label>
+                <input type="number" id="manualProgress" min="0" max="100">
+            </div>
+
+            <div class="form-group">
+                <label>Start Latitude</label>
+                <input type="number" id="startLat">
+            </div>
+
+            <div class="form-group">
+                <label>Start Longitude</label>
+                <input type="number" id="startLng">
+            </div>
+
+            <div class="form-group">
+                <label>Destination Latitude</label>
+                <input type="number" id="destLat">
+            </div>
+
+            <div class="form-group">
+                <label>Destination Longitude</label>
+                <input type="number" id="destLng">
+            </div>
+
+            <div class="form-group">
+                <label>Current Location</label>
+                <input type="text" id="currentLocation">
+            </div>
+
+            <div class="form-group full-width">
+                <label>Manual Arrival Time</label>
+                <input type="datetime-local" id="manualArrival">
+            </div>
+
+            <div class="form-group full-width">
+                <label>Upload Item Image</label>
+                <input type="file" id="image" accept="image/*">
+            </div>
+
+        </div>
+
+        <div class="admin-buttons">
+            <button class="save-btn" onclick="updatePackage()">Save / Update</button>
+            <button class="delete-btn" onclick="deletePackage()">Delete</button>
+            <button class="retrieve-btn" onclick="loadPackageForEdit()">Retrieve</button>
+        </div>
+
+        <div style="margin-top:15px;">
+            <a href="index.html" target="_blank">Go to Tracking Page</a>
+        </div>
+    </div>
+
+</div>
+
+<script>
+const ADMIN_PASSWORD = "baby123";
+
+function checkAdminPassword() {
+    const input = document.getElementById("adminPasswordInput").value;
+    if (input === ADMIN_PASSWORD) {
+        document.getElementById("passwordSection").style.display = "none";
+        document.getElementById("adminDashboard").style.display = "block";
+    } else {
+        alert("Wrong password!");
+    }
+}
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

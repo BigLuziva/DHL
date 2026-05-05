@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Track Package</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <!-- Routing Machine -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+</head>
+<body>
+
+    <div class="bg-slider">
+        <div class="slide active"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+
+    </div>
+
+
+<header class="tracking-header" style="background-color: #fc0;">
+    <a href="https://tracker-iota-roan.vercel.app/index.html"><img src="images/logo.jpeg" alt="Logo" class="logo"></a>
+    <div class="navbar-links" style="display: flex; margin-left: auto; gap: 14px;">
+        <a href="https://tracker-iota-roan.vercel.app/index.html" style="text-decoration: none; color:rgb(248, 3, 3); font-weight: bold;">Home</a>
+        <a href="#" style="text-decoration: none; color: rgb(248, 3, 3); font-weight: bold;">Contact Us</a>   
+    </div>
+</header>
+
+    <div class="home-text" style="text-align: center; color: #fff; font-size:x-large; font-weight: bolder;">
+        <h1>World Safest & Fastest Shipping Logistics Services.</h1>
+        <p>Don't just ship items, ship your future.</p>
+    </div>
+
+<div class="tracking-container">
+    <h1 style="text-align: center; color: rgb(248, 3, 3);">Track Your Package</h1>
+    <div class="track-input-box">
+        <input type="text" id="trackInput" placeholder="Enter Tracking Code">
+        <button onclick="trackItem()">Track</button>
+    </div>
+
+    <div id="result" class="package-info"></div>
+
+    <div class="route-info">
+        <p><strong>Distance:</strong> <span id="distance">-</span></p>
+        <p><strong>ETA:</strong> <span id="eta">-</span></p>
+        <p><strong>Estimated Arrival:</strong> <span id="arrivalTime">-</span></p>
+    </div>
+
+    <div class="progress-container">
+        <div id="progressBar"></div>
+    </div>
+
+    <div id="map"></div>
+</div>
+
+<!-- Leaflet FIRST -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- Routing Machine -->
+<script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+
+<!--FIND CHARGE DIV-->
+<div class="find-charge-container">
+    <div class="find-charge-image"><img src="images/FindUsPakage.jpeg" alt="find us"></div>
+    <div class="find-texts-container">
+        <div class="find-text" style="margin-left: 100px; font-size: large;">
+            <h1>Find Us Anywhere</h1>
+            <p>View the network of DHL and Destination available near you.</p>
+        </div>
+        <div class="find-numbers-container" style="margin-left:320px; font-size: large;">
+            <div class="number-one">
+                <h1>200+</h1>
+                <p>Countries</p>
+            </div>
+            <div class="number-two">
+                <h1>10M+</h1>
+                <p>Destinations</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+ <!--FIND BUTTONS-->
+<div class="button-container">
+    <button class="view-network-btn" style="color: #fff; background-color: rgb(248, 3, 3); border-radius: 8px; height: 40px; width: 120px;">View Network</button>
+    <button class="learn-more-btn" style="color: rgb(248, 3, 3); background-color: #fff; border-radius: 8px; height: 40px; width: 120px;">Learn More</button>
+</div><br>
+
+<!--SIDE BY SIDE IMAGES-->
+<div class="image-row">
+    <div class="image-card">
+        <img src="images/DhlPlane.jpeg" alt="">
+        <div class="image-text">Express Shipping</div>
+    </div>
+    <div class="image-card">
+        <img src="images/SmilingMan.jpeg" alt="">
+        <div class="image-text">Secure Delivery</div>
+    </div>
+    <div class="image-card">
+        <img src="images/WharehousePakaging.jpeg" alt="">
+        <div class="image-text">Secure Wharehouse</div>
+    </div> 
+</div>
+
+
+<div class="last-text" style=" text-align: center; font-size:medium; margin-top: 100px;">
+    <p> DHL  ©  2026 Privacy & Legal Vehicle Recalls Contact News Get Updates Locations Learn</p>
+</div>
+
+
+<!-- YOUR SCRIPT LAST -->
+<script src="script.js"></script>
+
+</body>
+</html>
