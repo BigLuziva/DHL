@@ -29,6 +29,7 @@ const db = getFirestore(app);
 
 const auth = getAuth(app);
 
+console.log("script.js loaded successfully");
 
 // ==========================
 // SUPABASE CONFIG
