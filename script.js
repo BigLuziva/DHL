@@ -4,7 +4,13 @@
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
 
-import { getFirestore} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+import {
+    getFirestore,
+    doc,
+    setDoc,
+    getDoc,
+    deleteDoc
+            } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
 import { getAuth } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
@@ -20,7 +26,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
-window.db = db;
 
 const auth = getAuth(app);
 
@@ -141,69 +146,104 @@ async function updatePackage() {
 
 
 // ==========================
-// SAVE DATA (FIXED)
+// SAVE DATA TO FIRESTORE
 // ==========================
 async function saveData(trackingNumber, imageData) {
 
     let currentLat = null;
     let currentLng = null;
-    let currentLocation = document.getElementById("currentLocation")?.value.trim() || null;
+
+    let currentLocation =
+        document.getElementById("currentLocation")?.value.trim() || null;
 
     if (currentLocation) {
+
         const coords = await geocodeAddress(currentLocation);
-        if (!coords) return alert("Invalid current location");
+
+        if (!coords) {
+            alert("Invalid current location");
+            return;
+        }
 
         currentLat = coords.lat;
         currentLng = coords.lng;
     }
 
-    const startLat = parseFloat(document.getElementById("startLat")?.value);
-    const startLng = parseFloat(document.getElementById("startLng")?.value);
-    const destLat = parseFloat(document.getElementById("destLat")?.value);
-    const destLng = parseFloat(document.getElementById("destLng")?.value);
+    const startLat = parseFloat(document.getElementById("startLat").value);
+    const startLng = parseFloat(document.getElementById("startLng").value);
+
+    const destLat = parseFloat(document.getElementById("destLat").value);
+    const destLng = parseFloat(document.getElementById("destLng").value);
 
     if (
-        isNaN(startLat) || isNaN(startLng) ||
-        isNaN(destLat) || isNaN(destLng)
+        isNaN(startLat) ||
+        isNaN(startLng) ||
+        isNaN(destLat) ||
+        isNaN(destLng)
     ) {
-        return alert("Invalid start/destination coordinates");
+        alert("Invalid coordinates");
+        return;
     }
 
     const packageData = {
+
         trackingNumber,
-        status: document.getElementById("status")?.value,
-        customerName: document.getElementById("customerName")?.value,
-        customerEmail: document.getElementById("customerEmail")?.value,
-        customerPhone: document.getElementById("customerPhone")?.value,
-        address: document.getElementById("address")?.value,
-        item: document.getElementById("item")?.value,
-        weight: parseFloat(document.getElementById("weight")?.value) || 0,
-        manualProgress: parseInt(document.getElementById("manualProgress")?.value) || 0,
+
+        status: document.getElementById("status").value,
+
+        customerName: document.getElementById("customerName").value,
+
+        customerEmail: document.getElementById("customerEmail").value,
+
+        customerPhone: document.getElementById("customerPhone").value,
+
+        address: document.getElementById("address").value,
+
+        item: document.getElementById("item").value,
+
+        weight: parseFloat(document.getElementById("weight").value) || 0,
+
+        manualProgress:
+            parseInt(document.getElementById("manualProgress").value) || 0,
 
         startLat,
         startLng,
+
         destLat,
         destLng,
 
         currentLocation,
+
         currentLat,
+
         currentLng,
 
-        manualArrival: document.getElementById("manualArrival")?.value,
+        manualArrival:
+            document.getElementById("manualArrival").value,
+
         image: imageData
+
     };
 
-    const { error } = await supabaseClient
-        .from("tracker")
-        .upsert(packageData, { onConflict: "trackingNumber" });
+    try {
 
-    if (error) {
-        console.error(error);
-        alert("Save failed");
-    } else {
-        alert("Saved successfully");
+        await setDoc(
+            doc(db, "tracker", trackingNumber),
+            packageData
+        );
+
+        alert("Package saved successfully!");
+
+    } catch (err) {
+
+        console.error(err);
+
+        alert("Save failed.");
+
     }
+
 }
+
 
 
 // ==========================
