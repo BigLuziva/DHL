@@ -31,14 +31,6 @@ const auth = getAuth(app);
 
 console.log("script.js loaded successfully");
 
-// ==========================
-// SUPABASE CONFIG
-// ==========================
-//const SUPABASE_URL = "https://hbfgzpkebogdcuabvlyb.supabase.co";
-//const SUPABASE_KEY = "sb_publishable_-kFLyd8FwGKvE8kldnSwMg_DtOWHSm4";
-
-//const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
 
 
 // ==========================
