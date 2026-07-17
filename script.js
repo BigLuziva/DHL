@@ -1,10 +1,37 @@
 // ==========================
+// FIREBASE CONFIG
+// ==========================
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+
+import { getFirestore} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+import { getAuth } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDVXhoDdxP6UJZTqV76XOG7y5zPNFrhHz8",
+    authDomain: "tracker-e616c.firebaseapp.com",
+    projectId: "tracker-e616c",
+    storageBucket: "tracker-e616c.firebasestorage.app",
+    messagingSenderId: "609685980737",
+    appId: "1:609685980737:web:0be7f51723ec1db777a8c0"
+};
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+const auth = getAuth(app);
+
+
+// ==========================
 // SUPABASE CONFIG
 // ==========================
-const SUPABASE_URL = "https://hbfgzpkebogdcuabvlyb.supabase.co";
-const SUPABASE_KEY = "sb_publishable_-kFLyd8FwGKvE8kldnSwMg_DtOWHSm4";
+//const SUPABASE_URL = "https://hbfgzpkebogdcuabvlyb.supabase.co";
+//const SUPABASE_KEY = "sb_publishable_-kFLyd8FwGKvE8kldnSwMg_DtOWHSm4";
 
-const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+//const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
 
 
 // ==========================
