@@ -476,7 +476,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //the HTML onclick attributes
 
-window.trackItem = trackItem;
 window.updatePackage = updatePackage;
 window.loadPackageForEdit = loadPackageForEdit;
 window.deletePackage = deletePackage;
+window.trackItem = trackItem;
