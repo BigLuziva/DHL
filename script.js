@@ -431,3 +431,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setInterval(showNextSlide, 7000);
 });
+
+
+//the HTML onclick attributes
+
+window.trackItem = trackItem;
+window.updatePackage = updatePackage;
+window.loadPackageForEdit = loadPackageForEdit;
+window.deletePackage = deletePackage;
