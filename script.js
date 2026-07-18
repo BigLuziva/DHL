@@ -455,6 +455,9 @@ function animateTruckAlongRoute(coords, data) {
 //SLIDER
 document.addEventListener("DOMContentLoaded", () => {
     const slides = document.querySelectorAll(".slide");
+
+    // Don't run slider on pages without slides
+    if (slides.length === 0) return;
     let currentSlide = 0;
 
     function showNextSlide() {
