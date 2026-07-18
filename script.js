@@ -30,6 +30,7 @@ const db = getFirestore(app);
 const auth = getAuth(app);
 
 console.log("script.js loaded successfully");
+console.log("Firebase loaded successfully");
 window.db = db;
 
 
