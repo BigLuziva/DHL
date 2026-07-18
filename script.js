@@ -245,13 +245,13 @@ async function loadPackageForEdit() {
     const trackingNumber = document.getElementById("trackingNumber")?.value.trim();
     if (!trackingNumber) return alert("Enter tracking number");
 
-    const { data, error } = await supabaseClient
-        .from("tracker")
-        .select("*")
-        .eq("trackingNumber", trackingNumber)
-        .maybeSingle();
+    const snap = await getDoc(doc(db, "tracker", trackingNumber));
 
-    if (error || !data) return alert("Not found");
+    if (!snap.exists()) {
+        return alert("Not found");
+    }
+
+    const data = snap.data();
 
     document.getElementById("status").value = data.status || "";
     document.getElementById("customerName").value = data.customerName || "";
@@ -282,13 +282,18 @@ async function deletePackage() {
     const trackingNumber = document.getElementById("trackingNumber")?.value.trim();
     if (!trackingNumber) return alert("Tracking number required");
 
-    const { error } = await supabaseClient
-        .from("tracker")
-        .delete()
-        .eq("trackingNumber", trackingNumber);
+    try {
 
-    if (error) alert("Delete failed");
-    else alert("Deleted");
+        await deleteDoc(doc(db, "tracker", trackingNumber));
+
+        alert("Deleted");
+
+    } catch (err) {
+
+        console.error(err);
+        alert("Delete failed");
+
+    }
 }
 
 
