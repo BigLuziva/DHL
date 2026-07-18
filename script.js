@@ -29,10 +29,6 @@ const db = getFirestore(app);
 
 const auth = getAuth(app);
 
-console.log("script.js loaded successfully");
-console.log("Firebase loaded successfully");
-window.db = db;
-
 
 
 // ==========================
@@ -306,15 +302,15 @@ async function trackItem() {
 
     if (!trackingNumber) return result.innerText = "Enter tracking number";
 
-    const { data, error } = await supabaseClient
-        .from("tracker")
-        .select("*")
-        .eq("trackingNumber", trackingNumber)
-        .maybeSingle();
+    const docRef = doc(db, "tracker", trackingNumber);
+    const docSnap = await getDoc(docRef);
 
-    if (error || !data) {
-        return result.innerText = "Tracking number not found.";
-    }
+    if (!docSnap.exists()) {
+    result.innerText = "Tracking number not found.";
+    return;
+}
+
+const data = docSnap.data();
 
     // 🔥 FORCE NUMBERS
     data.startLat = parseFloat(data.startLat);
