@@ -16,12 +16,24 @@
 
     <!-- PASSWORD LOGIN -->
     <div id="passwordSection">
+
         <h2>Admin Login</h2>
+
         <div class="form-group full-width">
-            <label>Enter Password</label>
-            <input type="password" id="adminPasswordInput" placeholder="Password">
+            <label>Email</label>
+            <input
+                type="email"
+                id="adminEmail"
+                placeholder="Email">
         </div>
-        <button class="save-btn" onclick="checkAdminPassword()">Login</button>
+
+        <div class="form-group full-width">
+            <label>Password</label>
+            <input type="password" id="adminPassword" placeholder="Password">
+        </div>
+
+        <button class="save-btn" onclick="loginAdmin()">Login</button>
+
     </div>
 
     <!-- DASHBOARD -->
@@ -127,20 +139,6 @@
     </div>
 
 </div>
-
-<script>
-const ADMIN_PASSWORD = "baby123";
-
-function checkAdminPassword() {
-    const input = document.getElementById("adminPasswordInput").value;
-    if (input === ADMIN_PASSWORD) {
-        document.getElementById("passwordSection").style.display = "none";
-        document.getElementById("adminDashboard").style.display = "block";
-    } else {
-        alert("Wrong password!");
-    }
-}
-</script>
 
 
 <script type="module" src="script.js"></script>

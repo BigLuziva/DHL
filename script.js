@@ -12,7 +12,14 @@ import {
     deleteDoc
             } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
-import { getAuth } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+
+import {
+    getAuth,
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged
+        } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";        
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyDVXhoDdxP6UJZTqV76XOG7y5zPNFrhHz8",
@@ -29,6 +36,55 @@ const db = getFirestore(app);
 
 const auth = getAuth(app);
 
+
+// ==========================
+// ADMIN LOGIN
+// ==========================
+
+async function loginAdmin() {
+
+    const email = document.getElementById("adminEmail").value.trim();
+
+    const password = document.getElementById("adminPassword").value;
+
+    try {
+
+        await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
+
+    } catch (err) {
+
+        alert(err.message);
+
+    }
+
+}
+
+
+//SHOW DASHBOARD ONLY AFTER LOGIN
+onAuthStateChanged(auth, (user) => {
+
+    const login = document.getElementById("passwordSection");
+    const dashboard = document.getElementById("adminDashboard");
+
+    if (!login || !dashboard) return;
+
+    if (user) {
+
+        login.style.display = "none";
+        dashboard.style.display = "block";
+
+    } else {
+
+        login.style.display = "block";
+        dashboard.style.display = "none";
+
+    }
+
+});
 
 
 // ==========================
@@ -479,3 +535,4 @@ window.updatePackage = updatePackage;
 window.loadPackageForEdit = loadPackageForEdit;
 window.deletePackage = deletePackage;
 window.trackItem = trackItem;
+window.loginAdmin = loginAdmin;
